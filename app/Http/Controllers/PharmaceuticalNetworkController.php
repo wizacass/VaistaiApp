@@ -27,7 +27,7 @@ class PharmaceuticalNetworkController extends Controller
      */
     public function create()
     {
-        //
+        dd('There will be a fancy form!');
     }
 
     /**
@@ -60,7 +60,9 @@ class PharmaceuticalNetworkController extends Controller
      */
     public function edit($id)
     {
-        //
+        $network = DB::select('SELECT * FROM DIDMENA WHERE pavadinimas=?', [$id])[0];
+
+        dd($network);
     }
 
     /**
