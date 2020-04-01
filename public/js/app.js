@@ -1935,6 +1935,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     toggleMenu: function toggleMenu(event) {
@@ -19559,9 +19561,7 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "navbar-brand" }, [
-          _c("a", { staticClass: "navbar-item", attrs: { href: "/" } }, [
-            _vm._v("Home")
-          ]),
+          _vm._m(0),
           _vm._v(" "),
           _c(
             "a",
@@ -19591,13 +19591,21 @@ var render = function() {
             staticClass: "navbar-menu",
             class: { "is-active": _vm.isMenuShown }
           },
-          [_vm._m(0)]
+          [_vm._m(1)]
         )
       ]
     )
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "navbar-item", attrs: { href: "/" } }, [
+      _c("em", { staticClass: "fas fa-home" })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

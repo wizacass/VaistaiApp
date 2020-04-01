@@ -2,7 +2,9 @@
   <div>
     <nav class="navbar is-dark is-bold is-fixed-top" role="navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="/">Home</a>
+        <a class="navbar-item" href="/">
+          <em class="fas fa-home"></em>
+        </a>
         <a
           role="button"
           class="navbar-burger"
