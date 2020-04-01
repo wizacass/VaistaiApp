@@ -5,7 +5,8 @@ console.log("Running JS...");
 window.Vue = require('vue');
 
 Vue.component('welcome', require('./components/Welcome.vue').default);
+Vue.component('mainmenu', require('./components/Menu.vue').default);
 
-const app = new Vue({
-    el: '#app'
+const menuApp = new Vue({
+    el: '#vueMenu',
 });
