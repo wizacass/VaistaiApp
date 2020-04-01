@@ -19553,7 +19553,10 @@ var render = function() {
   return _c("div", [
     _c(
       "nav",
-      { staticClass: "navbar is-dark", attrs: { role: "navigation" } },
+      {
+        staticClass: "navbar is-dark is-bold is-fixed-top",
+        attrs: { role: "navigation" }
+      },
       [
         _c("div", { staticClass: "navbar-brand" }, [
           _c("a", { staticClass: "navbar-item", attrs: { href: "/" } }, [

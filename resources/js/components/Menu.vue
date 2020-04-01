@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar is-dark" role="navigation">
+    <nav class="navbar is-dark is-bold is-fixed-top" role="navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">Home</a>
         <a
