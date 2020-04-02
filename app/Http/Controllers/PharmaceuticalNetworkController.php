@@ -40,9 +40,13 @@ class PharmaceuticalNetworkController extends Controller
     {
         $attributes = $this->validateParameters();
 
-        dd($attributes);
+        DB::insert('INSERT INTO DIDMENA (pavadinimas, salis, adresas) VALUES (?, ?, ?)', [
+            $attributes['name'],
+            $attributes['country'],
+            $attributes['address']
+        ]);
 
-        //dd($attributes['pavadinimas']);
+        return redirect('/networks');
     }
 
     /**
