@@ -27,7 +27,7 @@ class PharmaceuticalNetworkController extends Controller
      */
     public function create()
     {
-        dd('There will be a fancy form!');
+        return view('ph_network.create');
     }
 
     /**
@@ -38,7 +38,7 @@ class PharmaceuticalNetworkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -60,9 +60,9 @@ class PharmaceuticalNetworkController extends Controller
      */
     public function edit($id)
     {
-        $network = DB::select('SELECT * FROM DIDMENA WHERE pavadinimas=?', [$id])[0];
+        $network = DB::select('SELECT * FROM DIDMENA WHERE pavadinimas = ?', [$id])[0];
 
-        dd($network);
+        return view('ph_network.edit', compact('network'));
     }
 
     /**
@@ -74,7 +74,7 @@ class PharmaceuticalNetworkController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -85,6 +85,8 @@ class PharmaceuticalNetworkController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleted = DB::delete('DELETE FROM DIDMENA where pvadinimas = ?', [$id]);
+
+        dd($deleted);
     }
 }
