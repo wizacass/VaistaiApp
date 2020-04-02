@@ -36,9 +36,13 @@ class PharmaceuticalNetworkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        dd($request);
+        $attributes = $this->validateParameters();
+
+        dd($attributes);
+
+        //dd($attributes['pavadinimas']);
     }
 
     /**
@@ -74,6 +78,8 @@ class PharmaceuticalNetworkController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dd($id);
+
         dd($request);
     }
 
@@ -88,5 +94,16 @@ class PharmaceuticalNetworkController extends Controller
         $deleted = DB::delete('DELETE FROM DIDMENA where pvadinimas = ?', [$id]);
 
         dd($deleted);
+    }
+
+    private function validateParameters()
+    {
+        $validators = ['required', 'min:3', 'max:255'];
+
+        return request()->validate([
+            'name' => $validators,
+            'country' => $validators,
+            'address' => $validators
+        ]);
     }
 }
