@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class WarehouseController extends Controller
@@ -13,7 +14,9 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        dd("DIDMENA Controller");
+        $warehouses = DB::select('SELECT * FROM DIDMENA');
+
+        return view('warehouse.index', compact('warehouses'));
     }
 
     /**
@@ -23,7 +26,7 @@ class WarehouseController extends Controller
      */
     public function create()
     {
-        //
+        dd("Creating DIDMENA");
     }
 
     /**
@@ -56,7 +59,7 @@ class WarehouseController extends Controller
      */
     public function edit($id)
     {
-        //
+         dd("Editing DIDMENA");
     }
 
     /**
@@ -79,6 +82,6 @@ class WarehouseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd("Deleting DIDMENA");
     }
 }
