@@ -19,12 +19,25 @@
           <td>{{$network->pavadinimas}}</td>
           <td>{{$network->salis}}</td>
           <td>{{$network->adresas}}</td>
-          <td><a href="/networks/{{$network->pavadinimas}}/edit">Edit</a></td>
+          <td>
+            <div class="level">
+              <div class="level-item">
+                <a class="button is-link is-small is-outlined" href="/networks/{{$network->pavadinimas}}/edit">Edit</a>
+              </div>
+              <div class="level-item">
+                <form method="POST" action="/networks/{{$network->pavadinimas}}">
+                  @method('DELETE')
+                  @csrf
+                  <button type="submit" class="button is-danger is-small is-outlined">Delete</button>
+                </form>
+              </div>
+            </div>
+          </td>
         </tr>
         @endforeach
       </tbody>
     </table>
-    <a role="button" class="button is-primary" href="/networks/create">Create new Entry</a>
+    <a role="button" class="button is-info is-bold" href="/networks/create">Create new Entry</a>
   </div>
 
 @endsection

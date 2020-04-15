@@ -8,6 +8,8 @@ use App\PharmaceuticalNetwork;
 
 class PharmaceuticalNetworkController extends Controller
 {
+    private $Validators = ['required', 'min:3', 'max:255'];
+
     /**
      * Display a listing of the resource.
      *
@@ -80,11 +82,20 @@ class PharmaceuticalNetworkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        dd($id);
+        $attributes = request()->validate([
+            'country' => $this->Validators,
+            'address' => $this->Validators
+        ]);
 
-        dd($request);
+        DB::update('UPDATE DIDMENA SET salis = ?, Adresas = ? WHERE pavadinimas = ?', [
+            $attributes['country'],
+            $attributes['address'],
+            $id
+        ]);
+
+        return redirect('/networks');
     }
 
     /**
@@ -95,19 +106,17 @@ class PharmaceuticalNetworkController extends Controller
      */
     public function destroy($id)
     {
-        $deleted = DB::delete('DELETE FROM DIDMENA where pvadinimas = ?', [$id]);
+        DB::delete('DELETE FROM DIDMENA WHERE pavadinimas = ?', [$id]);
 
-        dd($deleted);
+        return redirect('/networks');
     }
 
     private function validateParameters()
     {
-        $validators = ['required', 'min:3', 'max:255'];
-
         return request()->validate([
-            'name' => $validators,
-            'country' => $validators,
-            'address' => $validators
+            'name' => $this->Validators,
+            'country' => $this->Validators,
+            'address' => $this->Validators
         ]);
     }
 }
