@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::resource('/networks', 'PharmaceuticalNetworkController');
+Route::resource('/warehouses', 'WarehouseController');

@@ -21,6 +21,7 @@
       <div class="navbar-menu" :class="{'is-active' : isMenuShown}">
         <div class="navbar-start">
           <a class="navbar-item" href="/networks">Pharmaceutical Networks</a>
+          <a class="navbar-item" href="/warehouses">Wholesale</a>
           <a class="navbar-item" href="#">TBA</a>
         </div>
       </div>
@@ -31,7 +32,6 @@
 export default {
   methods: {
     toggleMenu: function(event) {
-      console.log("Menu toggled!");
       this.isMenuShown = !this.isMenuShown;
     }
   },
