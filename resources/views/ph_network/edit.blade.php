@@ -24,17 +24,17 @@
         </article>
       @endif
 
-      <div class="field">
+      {{-- <div class="field">
         <label class="label" for="country">Country</label>
         <div class="control">
           <input type="text" class="input {{ $errors->has('country') ? 'is-danger' : '' }}" name="country" placeholder="Country" value="{{ $network->salis }}" required>
         </div>
-      </div>
+      </div> --}}
 
       <div class="field">
-        <label class="label" for="address">Address</label>
+        <label class="label" for="year">Year Founded</label>
         <div class="control">
-          <input type="text" class="input {{ $errors->has('address') ? 'is-danger' : '' }}" name="address" placeholder="Warehouse Address" value="{{ $network->adresas }}" required>
+          <input type="text" class="input {{ $errors->has('year') ? 'is-danger' : '' }}" name="year" placeholder="Year Founded" value="{{ $network->ikurimo_metai }}" required>
         </div>
       </div>
 

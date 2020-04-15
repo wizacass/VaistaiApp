@@ -4,7 +4,7 @@
 
   <div class="container">
     <div class="container" style="margin: 1.5em">
-      <h1 class="title center-text">Create a new Pharmaceutical Network</h1>
+      <h1 class="title center-text">Register a new Pharmaceutical Network</h1>
     </div>
 
     <form method="POST" action="/networks">
@@ -30,17 +30,17 @@
         </div>
       </div>
 
-      <div class="field">
+      {{-- <div class="field">
         <label class="label" for="country">Country</label>
         <div class="control">
           <input type="text" class="input {{ $errors->has('country') ? 'is-danger' : '' }}" name="country" placeholder="Country" value="{{ old('country') }}" required>
         </div>
-      </div>
+      </div> --}}
 
       <div class="field">
-        <label class="label" for="address">Address</label>
+        <label class="label" for="year">Year founded</label>
         <div class="control">
-          <input type="text" class="input {{ $errors->has('address') ? 'is-danger' : '' }}" name="address" placeholder="Warehouse Address" value="{{ old('address') }}" required>
+          <input type="text" class="input {{ $errors->has('address') ? 'is-danger' : '' }}" name=year placeholder="Year" value="{{ old('year') }}" required>
         </div>
       </div>
 
