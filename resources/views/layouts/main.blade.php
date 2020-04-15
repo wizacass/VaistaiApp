@@ -7,6 +7,11 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" >
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <title>VaistaiApp</title>
+  <style>
+      .center-text {
+          text-align: center;
+      }
+  </style>
 </head>
 <body>
   <div id="vueMenu">
@@ -15,6 +20,6 @@
 
   @yield('content')
 
-  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
 </body>
 </html>

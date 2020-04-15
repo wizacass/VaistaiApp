@@ -19611,8 +19611,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "navbar-start" }, [
-      _c("a", { staticClass: "navbar-item", attrs: { href: "#" } }, [
-        _vm._v("TBA")
+      _c("a", { staticClass: "navbar-item", attrs: { href: "/networks" } }, [
+        _vm._v("Pharmaceutical Networks")
       ]),
       _vm._v(" "),
       _c("a", { staticClass: "navbar-item", attrs: { href: "#" } }, [
@@ -31793,7 +31793,6 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-console.log("Running JS...");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 Vue.component('mainmenu', __webpack_require__(/*! ./components/Menu.vue */ "./resources/js/components/Menu.vue")["default"]);
 var menuApp = new Vue({
