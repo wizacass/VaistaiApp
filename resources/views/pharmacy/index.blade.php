@@ -30,28 +30,6 @@
           <td style="text-align: center"><a class="button is-link is-small is-outlined">Show</a></td>
         </tr>
         @endforeach
-
-        {{-- @foreach ($warehouses as $warehouse)
-        <tr>
-          <td>{{$warehouse->pavadinimas}}</td>
-          <td>{{$warehouse->salis}}</td>
-          <td>{{$warehouse->adresas}}</td>
-          <td>
-            <div class="level">
-              <div class="level-item">
-                <a class="button is-link is-small is-outlined" href="/warehouses/{{$warehouse->pavadinimas}}/edit">Edit</a>
-              </div>
-              <div class="level-item">
-                <form method="POST" action="/warehouses/{{$warehouse->pavadinimas}}">
-                  @method('DELETE')
-                  @csrf
-                  <button type="submit" class="button is-danger is-small is-outlined">Delete</button>
-                </form>
-              </div>
-            </div>
-          </td>
-        </tr>
-        @endforeach --}}
       </tbody>
     </table>
     <a role="button" class="button is-info is-bold" href="/warehouses/create">Register a new pharmacy</a>

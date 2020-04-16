@@ -26,7 +26,7 @@ class PharmacyController extends Controller
      */
     public function create()
     {
-        //
+        dd('I register Pharmacies');
     }
 
     /**
