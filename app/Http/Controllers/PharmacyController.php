@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PharmacyController extends Controller
@@ -13,7 +14,9 @@ class PharmacyController extends Controller
      */
     public function index()
     {
-        dd("Pharmmacy Index");
+        $pharmacies = DB::select('SELECT * FROM VAISTINE');
+
+        return view('pharmacy.index', compact('pharmacies'));
     }
 
     /**
