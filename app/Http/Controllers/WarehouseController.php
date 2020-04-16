@@ -7,11 +7,8 @@ use Illuminate\Http\Request;
 
 class WarehouseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $validators = ['required', 'min:3', 'max:255'];
+
     public function index()
     {
         $warehouses = DB::select('SELECT * FROM DIDMENA');
@@ -19,69 +16,57 @@ class WarehouseController extends Controller
         return view('warehouse.index', compact('warehouses'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        dd("Creating DIDMENA");
+        return view('warehouse.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $attributes = request()->validate([
+            'name' => $this->validators,
+            'country' => $this->validators,
+            'address' => $this->validators
+        ]);
+
+        DB::insert('INSERT INTO DIDMENA (pavadinimas, salis, adresas) VALUES (?, ?, ?)', [
+            $attributes['name'],
+            $attributes['country'],
+            $attributes['address']
+        ]);
+
+        return redirect('/warehouses');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    public function show($id) { }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-         dd("Editing DIDMENA");
+        $warehouse = DB::select('SELECT * FROM DIDMENA WHERE pavadinimas = ?', [$id])[0];
+
+        return view('warehouse.edit', compact('warehouse'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $attributes = request()->validate([
+            'country' => $this->validators,
+            'address' => $this->validators
+        ]);
+
+        DB::update('UPDATE DIDMENA SET salis = ?, adresas = ? WHERE pavadinimas = ?', [
+            $attributes['country'],
+            $attributes['address'],
+            $id
+        ]);
+
+        return redirect('/warehouses');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        dd("Deleting DIDMENA");
+        DB::delete('DELETE FROM DIDMENA WHERE pavadinimas = ?', [$id]);
+
+        return redirect('/warehouses');
     }
 }
