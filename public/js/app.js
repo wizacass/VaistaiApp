@@ -1937,10 +1937,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     toggleMenu: function toggleMenu(event) {
-      console.log("Menu toggled!");
       this.isMenuShown = !this.isMenuShown;
     }
   },
@@ -19613,6 +19613,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "navbar-start" }, [
       _c("a", { staticClass: "navbar-item", attrs: { href: "/networks" } }, [
         _vm._v("Pharmaceutical Networks")
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "navbar-item", attrs: { href: "/warehouses" } }, [
+        _vm._v("Wholesale")
       ]),
       _vm._v(" "),
       _c("a", { staticClass: "navbar-item", attrs: { href: "#" } }, [
