@@ -25,7 +25,7 @@
           <td style="text-align: right">{{$pharmacy->darbuotoju_skaicius}}</td>
           <td>{{$pharmacy->telefonas ?? "GDPR_Protected"}}</td>
           <td style="text-align: right">{{$pharmacy->apyvarta}}</td>
-          <td><a href="#">{{$pharmacy->fk_TINKLASpavadinimas}}</a></td>
+          <td><a href="/networks/{{$pharmacy->fk_TINKLASpavadinimas}}">{{$pharmacy->fk_TINKLASpavadinimas}}</a></td>
           <td></td>
           <td style="text-align: center"><a class="button is-link is-small is-outlined">Show</a></td>
         </tr>
