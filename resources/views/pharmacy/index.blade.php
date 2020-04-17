@@ -27,7 +27,7 @@
           <td style="text-align: right">{{$pharmacy->apyvarta}}</td>
           <td><a href="/networks/{{$pharmacy->fk_TINKLASpavadinimas}}">{{$pharmacy->fk_TINKLASpavadinimas}}</a></td>
           <td></td>
-          <td style="text-align: center"><a class="button is-link is-small is-outlined">Show</a></td>
+          <td style="text-align: center"><a class="button is-link is-small is-outlined" href="/pharmacies/{{$pharmacy->filialo_id}}">Show</a></td>
         </tr>
         @endforeach
       </tbody>
