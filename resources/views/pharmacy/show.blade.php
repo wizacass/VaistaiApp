@@ -69,7 +69,7 @@
           <tr>
             <td>{{$employee->vardas}} {{$employee->pavarde}}</td>
             <td>{{$employee->darbo_stazas}}y.</td>
-            <td></td>
+            <td>{{$employee->name}}</td>
             <td style="text-align: center"><a href="#" class="button is-danger is-small">Fire</a></td>
           </tr>
         @endforeach
