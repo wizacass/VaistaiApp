@@ -37,6 +37,18 @@
               </tr>
           </tbody>
       </table>
+      <div class="level">
+          <div class="level-item">
+            <a class="button is-link is-outlined" href="/pharmacies/{{$pharmacy->filialo_id}}/edit">Edit</a>
+          </div>
+          <div class="level-item">
+            <form method="POST" action="/pharmacies/{{$pharmacy->filialo_id}}">
+                @method('DELETE')
+                @csrf
+                <button type="submit" class="button is-danger">Delete</button>
+            </form>
+          </div>
+      </div>
       <h3 class="subtitle has-text-centered">Registers</h3>
       <table class="table is-striped is-fullwidth">
         <thead class="has-text-centered">

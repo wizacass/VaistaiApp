@@ -67,7 +67,7 @@ class PharmacyController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd('I edit pharmacy!');
     }
 
     /**
@@ -90,6 +90,6 @@ class PharmacyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd('I delete Pharmacy!');
     }
 }
