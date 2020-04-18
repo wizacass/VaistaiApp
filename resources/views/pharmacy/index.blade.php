@@ -32,7 +32,7 @@
         @endforeach
       </tbody>
     </table>
-    <a role="button" class="button is-info is-bold" href="/warehouses/create">Register a new pharmacy</a>
+    <a role="button" class="button is-info is-bold" href="/pharmacies/create">Register a new pharmacy</a>
   </div>
 
 @endsection

@@ -26,7 +26,7 @@ class PharmacyController extends Controller
      */
     public function create()
     {
-        dd('I register Pharmacies');
+        return view('pharmacy.create');
     }
 
     /**
@@ -37,7 +37,7 @@ class PharmacyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
