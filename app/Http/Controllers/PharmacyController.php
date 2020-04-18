@@ -54,8 +54,6 @@ class PharmacyController extends Controller
         $registers = DB::select('SELECT * FROM KASA WHERE fk_VAISTINEfilialo_id = ?', [$pharmacy->filialo_id]);
         $drugs = DB::select('SELECT * FROM VAISTAS WHERE fk_VAISTINEfilialo_id = ?', [$pharmacy->filialo_id]);
 
-        // dd($pharmacy, $employees, $registers, $drugs);
-
         return view('pharmacy.show', compact('pharmacy', 'employees', 'registers', 'drugs'));
     }
 

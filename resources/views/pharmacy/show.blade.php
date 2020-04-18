@@ -61,7 +61,7 @@
           <tr>
             <td>{{$register->modelis}}</td>
             <td>{{$register->pinigu_skaicius}}</td>
-            <td style="text-align: center"><a href="#" class="button is-danger is-small">Remove</a></td>
+            <td style="text-align: center"><a href="#" class="button is-danger is-small is-outlined">Remove</a></td>
           </tr>
         @endforeach
         </tbody>
@@ -82,7 +82,7 @@
             <td>{{$employee->vardas}} {{$employee->pavarde}}</td>
             <td>{{$employee->darbo_stazas}}y.</td>
             <td>{{$employee->name}}</td>
-            <td style="text-align: center"><a href="#" class="button is-danger is-small">Fire</a></td>
+            <td style="text-align: center"><a href="#" class="button is-danger is-small is-outlined">Unassign</a></td>
           </tr>
         @endforeach
         </tbody>
