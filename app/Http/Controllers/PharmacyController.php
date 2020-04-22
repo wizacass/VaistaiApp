@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 
 class PharmacyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $pharmacies = DB::select('SELECT * FROM VAISTINE');
@@ -19,33 +14,31 @@ class PharmacyController extends Controller
         return view('pharmacy.index', compact('pharmacies'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('pharmacy.create');
+        $networks = DB::select('SELECT TINKLAS.pavadinimas FROM TINKLAS');
+
+        return view('pharmacy.create', compact('networks'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        dd($request);
+        $attributes = request()->validate([
+            'address' => ['required', 'min:3', 'max:255'],
+        ]);
+
+        DB::insert('INSERT INTO VAISTINE (darbuotoju_skaicius, adresas, yraGamybine, telefonas, apyvarta, fk_TINKLASpavadinimas) VALUES (?, ?, ?, ?, ?, ?)', [
+            0,
+            $attributes['address'],
+            $request->has('manufacturing'),
+            $request->phone,
+            0,
+            $request->network
+        ]);
+
+        return redirect('/pharmacies');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $pharmacy = DB::select('SELECT * FROM VAISTINE WHERE filialo_id = ?', [$id])[0];

@@ -25,8 +25,20 @@
           <td style="text-align: right">{{$pharmacy->darbuotoju_skaicius}}</td>
           <td>{{$pharmacy->telefonas ?? "GDPR_Protected"}}</td>
           <td style="text-align: right">{{$pharmacy->apyvarta}}</td>
-          <td><a href="/networks/{{$pharmacy->fk_TINKLASpavadinimas}}">{{$pharmacy->fk_TINKLASpavadinimas}}</a></td>
-          <td></td>
+          <td>
+          @if ($pharmacy->fk_TINKLASpavadinimas != NULL)
+            <a href="/networks/{{$pharmacy->fk_TINKLASpavadinimas}}">{{$pharmacy->fk_TINKLASpavadinimas}}</a>
+          @else
+            <p>Independent</p>
+          @endif
+          </td>
+          <td>
+            @if ($pharmacy->yraGamybine)
+              <span class="icon">
+                <i class="fas fa-mortar-pestle"></i>
+              </span>
+            @endif
+          </td>
           <td style="text-align: center"><a class="button is-link is-small is-outlined" href="/pharmacies/{{$pharmacy->filialo_id}}">Show</a></td>
         </tr>
         @endforeach
