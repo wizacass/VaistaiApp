@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::resource('/networks', 'PharmaceuticalNetworkController');
 Route::resource('/warehouses', 'WarehouseController');
 Route::resource('/pharmacies', 'PharmacyController');
+Route::resource('/employees', 'EmployeeController');
