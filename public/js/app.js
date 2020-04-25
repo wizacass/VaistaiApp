@@ -1938,6 +1938,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     toggleMenu: function toggleMenu(event) {
@@ -19617,6 +19618,10 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("a", { staticClass: "navbar-item", attrs: { href: "/warehouses" } }, [
         _vm._v("Wholesale")
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "navbar-item", attrs: { href: "/pharmacies" } }, [
+        _vm._v("Pharmacies")
       ]),
       _vm._v(" "),
       _c("a", { staticClass: "navbar-item", attrs: { href: "#" } }, [

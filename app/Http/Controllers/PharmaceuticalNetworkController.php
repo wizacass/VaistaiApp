@@ -34,7 +34,10 @@ class PharmaceuticalNetworkController extends Controller
         return redirect('/networks');
     }
 
-    public function show($id) { }
+    public function show($id)
+    {
+        dd("I display '$id' info");
+    }
 
     public function edit($id)
     {

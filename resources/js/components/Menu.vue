@@ -22,6 +22,7 @@
         <div class="navbar-start">
           <a class="navbar-item" href="/networks">Pharmaceutical Networks</a>
           <a class="navbar-item" href="/warehouses">Wholesale</a>
+          <a class="navbar-item" href="/pharmacies">Pharmacies</a>
           <a class="navbar-item" href="#">TBA</a>
         </div>
       </div>
