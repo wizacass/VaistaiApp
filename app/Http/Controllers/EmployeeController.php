@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('employee.index');
+        $employees = DB::select('SELECT * FROM DARBUOTOJAS INNER JOIN Vaistininko_Pareigos ON DARBUOTOJAS.pareigos = Vaistininko_Pareigos.id_Vaistininko_Pareigos');
+
+        //dd($employees);
+
+        return view('employee.index', compact('employees'));
     }
 
     /**
@@ -23,7 +23,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        dd('I create employee!');
     }
 
     /**
