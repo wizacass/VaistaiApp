@@ -11,8 +11,6 @@ class EmployeeController extends Controller
     {
         $employees = DB::select('SELECT * FROM DARBUOTOJAS INNER JOIN Vaistininko_Pareigos ON DARBUOTOJAS.pareigos = Vaistininko_Pareigos.id_Vaistininko_Pareigos');
 
-        //dd($employees);
-
         return view('employee.index', compact('employees'));
     }
 
@@ -71,14 +69,10 @@ class EmployeeController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        DB::delete('DELETE FROM DARBUOTOJAS WHERE id = ?', [$id]);
+
+        return redirect('employees');
     }
 }
