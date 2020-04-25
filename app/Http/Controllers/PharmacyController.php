@@ -73,14 +73,10 @@ class PharmacyController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        dd('I delete Pharmacy!');
+        DB::delete('DELETE FROM VAISTINE WHERE filialo_id = ?', [$id]);
+
+        return redirect('/pharmacies');
     }
 }
