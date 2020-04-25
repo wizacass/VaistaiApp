@@ -14,25 +14,19 @@ class EmployeeController extends Controller
         return view('employee.index', compact('employees'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        dd('I create employee!');
+        $positions = DB::select('SELECT * FROM Vaistininko_Pareigos');
+        $networks = DB::select('SELECT pavadinimas FROM TINKLAS');
+
+        return view('employee.create', compact('positions', 'networks'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        dd($request);
+
+        dd("I store new employee!");
     }
 
     /**
