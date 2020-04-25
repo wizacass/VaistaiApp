@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
+    private $nameValidators = ['required', 'min:3', 'max:255'];
+
     public function index()
     {
-        $employees = DB::select('SELECT * FROM DARBUOTOJAS INNER JOIN Vaistininko_Pareigos ON DARBUOTOJAS.pareigos = Vaistininko_Pareigos.id_Vaistininko_Pareigos');
+        $employees = DB::select('SELECT * FROM DARBUOTOJAS INNER JOIN Vaistininko_Pareigos ON DARBUOTOJAS.pareigos = Vaistininko_Pareigos.id_Vaistininko_Pareigos ORDER BY DARBUOTOJAS.id');
 
         return view('employee.index', compact('employees'));
     }
@@ -24,9 +26,22 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
+        $attributes = request()->validate([
+            'name' => $this->nameValidators,
+            'surname' => $this->nameValidators,
+            'seniority' => ['required', 'integer', 'min:0', 'max:100'],
+            'position' => ['required', 'integer']
+        ]);
 
-        dd("I store new employee!");
+        DB::insert('INSERT INTO DARBUOTOJAS (vardas, pavarde, darbo_stazas, pareigos, fk_TINKLASpavadinimas) VALUES (?, ?, ?, ?, ?)', [
+            $attributes['name'],
+            $attributes['surname'],
+            $attributes['seniority'],
+            $attributes['position'],
+            $request->network
+        ]);
+
+        return redirect('employees');
     }
 
     /**
@@ -48,7 +63,7 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd('I edit employee!');
     }
 
     /**
