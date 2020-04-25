@@ -50,27 +50,26 @@ class PharmacyController extends Controller
         return view('pharmacy.show', compact('pharmacy', 'employees', 'registers', 'drugs'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        dd('I edit pharmacy!');
+        $pharmacy = DB::select('SELECT * FROM VAISTINE WHERE filialo_id = ?', [$id])[0];
+
+        return view('pharmacy.edit', compact('pharmacy'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $attributes = request()->validate([
+            'address' => ['required', 'min:3', 'max:255'],
+        ]);
+
+        DB::update('UPDATE VAISTINE SET adresas = ?, telefonas = ? WHERE filialo_id = ?', [
+            $attributes['address'],
+            $request->phone,
+            $id
+        ]);
+
+        return redirect('/pharmacies');
     }
 
     public function destroy($id)
