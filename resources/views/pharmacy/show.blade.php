@@ -8,9 +8,11 @@
       <h1 class="title">
         Pharmacy no. {{$pharmacy->filialo_id}}
       </h1>
+      @if ($pharmacy->fk_TINKLASpavadinimas != NULL)
       <h2 class="subtitle">
         Belongs to <a href="/networks/{{$pharmacy->fk_TINKLASpavadinimas}}">{{$pharmacy->fk_TINKLASpavadinimas}}</a>
       </h2>
+      @endif
     </div>
   </div>
 </section>
