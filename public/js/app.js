@@ -19614,7 +19614,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "navbar-start" }, [
-      _c("a", { staticClass: "navbar-item", attrs: { href: "#" } }, [
+      _c("a", { staticClass: "navbar-item", attrs: { href: "/factories" } }, [
         _vm._v("Factories")
       ]),
       _vm._v(" "),
