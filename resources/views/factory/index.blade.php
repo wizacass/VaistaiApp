@@ -29,7 +29,7 @@
     <br/>
 
     <div class="field has-text-centered">
-      <a href="#" class="button is-info is-large">Register new Factory</a>
+      <a href="/factories/create" class="button is-info is-large">Register new Factory</a>
     </div>
 
     <br/>

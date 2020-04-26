@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class FactoryController extends Controller
 {
+    private $validators = ['required', 'min:3', 'max:255'];
+
     public function index()
     {
         $factories = DB::select('SELECT * FROM FABRIKAS');
@@ -14,25 +16,26 @@ class FactoryController extends Controller
         return view('factory.index', compact('factories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('factory.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $attributes = request()->validate([
+            'name' => $this->validators,
+            'country' => $this->validators,
+            'email' => ['nullable', 'email', 'max:255']
+        ]);
+
+        DB::insert('INSERT INTO FABRIKAS (pavadinimas, salis, el_pastas) VALUES (?, ?, ?)', [
+            $attributes['name'],
+            $attributes['country'],
+            $attributes['email'],
+        ]);
+
+        return redirect('factories');
     }
 
     /**
