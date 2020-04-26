@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class FactoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $factories = DB::select('SELECT * FROM FABRIKAS');
+
+        return view('factory.index', compact('factories'));
     }
 
     /**
