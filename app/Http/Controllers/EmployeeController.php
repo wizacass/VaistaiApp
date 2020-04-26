@@ -44,16 +44,36 @@ class EmployeeController extends Controller
         return redirect('employees');
     }
 
-    public function show($id) { }
+    public function show($id) { return redirect('employees'); }
 
     public function edit($id)
     {
-        dd('I edit employee!');
+        $employee = DB::select('SELECT * FROM DARBUOTOJAS WHERE id = ?', [$id])[0];
+        $positions = DB::select('SELECT * FROM Vaistininko_Pareigos');
+        $networks = DB::select('SELECT pavadinimas FROM TINKLAS');
+
+        return view('employee.edit', compact('employee', 'positions', 'networks'));
     }
 
     public function update(Request $request, $id)
     {
-        dd($request);
+        $attributes = request()->validate([
+            'name' => $this->nameValidators,
+            'surname' => $this->nameValidators,
+            'seniority' => ['required', 'integer', 'min:0', 'max:100'],
+            'position' => ['required', 'integer']
+        ]);
+
+        DB::update('UPDATE DARBUOTOJAS SET vardas = ?, pavarde = ?, darbo_stazas = ?, pareigos = ?, fk_TINKLASpavadinimas = ? WHERE id = ?', [
+            $attributes['name'],
+            $attributes['surname'],
+            $attributes['seniority'],
+            $attributes['position'],
+            $request->network,
+            $id
+        ]);
+
+        return redirect('employees');
     }
 
     public function destroy($id)
