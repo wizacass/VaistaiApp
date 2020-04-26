@@ -20,7 +20,7 @@
             <td>{{ $factory->pavadinimas }}</td>
             <td>{{ $factory->salis }}</td>
             <td>{{ $factory->el_pastas ?? "GDPR_Protected" }}</td>
-            <td><a href="#" class="button is-info is-outlined is-small">Show</a></td>
+            <td><a href="factories/{{ $factory->pavadinimas }}" class="button is-info is-outlined is-small">Show</a></td>
           </tr>
         @endforeach
       </tbody>

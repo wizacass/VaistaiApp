@@ -38,15 +38,12 @@ class FactoryController extends Controller
         return redirect('factories');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $factory = DB::select('SELECT * FROM FABRIKAS WHERE pavadinimas = ?', [$id])[0];
+        $customers = DB::select('SELECT fk_DIDMENApavadinimas FROM DIDMENA_FABRIKAS WHERE fk_FABRIKASpavadinimas = ? ', [$id]);
+
+        return view('factory.show', compact('factory', 'customers'));
     }
 
     /**
