@@ -57,13 +57,32 @@ class FactoryController extends Controller
 
     public function update(Request $request, $id)
     {
-        dd($request);
+        $attributes = request()->validate([
+            'country' => $this->validators,
+            'email' => ['nullable', 'email', 'max:255']
+        ]);
+
+        $this->cleanCustomers($id);
+        foreach($request->customers as $customer)
+        {
+            DB::insert("INSERT INTO DIDMENA_FABRIKAS (fk_DIDMENApavadinimas, fk_FABRIKASpavadinimas) VALUES (?, ?)", [
+                $customer,
+                $id
+            ]);
+        }
+
+        DB::update('UPDATE FABRIKAS SET salis = ?, el_pastas = ? WHERE pavadinimas = ?', [
+            $attributes['country'],
+            $attributes['email'],
+            $id
+        ]);
+
+        return redirect("factories/$id");
     }
 
     public function destroy($id)
     {
-        // TODO: Delete entries from DIDMENA_FABRIKAS table too
-
+        $this->cleanCustomers($id);
         DB::delete('DELETE FROM FABRIKAS WHERE pavadinimas = ?', [$id]);
 
         return redirect('factories');
@@ -78,5 +97,10 @@ class FactoryController extends Controller
             array_push($names, $customer->fk_DIDMENApavadinimas);
         }
         return $names;
+    }
+
+    private function cleanCustomers($id)
+    {
+        DB::delete('DELETE FROM DIDMENA_FABRIKAS WHERE fk_FABRIKASpavadinimas = ?', [$id]);
     }
 }
