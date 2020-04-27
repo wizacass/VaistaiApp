@@ -20,18 +20,6 @@
           <td>{{$warehouse->salis}}</td>
           <td>{{$warehouse->adresas}}</td>
           <td>
-            {{-- <div class="level">
-              <div class="level-item">
-                <a class="button is-link is-small is-outlined" href="/warehouses/{{$warehouse->pavadinimas}}/edit">Edit</a>
-              </div>
-              <div class="level-item">
-                <form method="POST" action="/warehouses/{{$warehouse->pavadinimas}}">
-                  @method('DELETE')
-                  @csrf
-                  <button type="submit" class="button is-danger is-small is-outlined">Delete</button>
-                </form>
-              </div>
-            </div> --}}
             <a class="button is-link is-small is-outlined" href="/warehouses/{{$warehouse->pavadinimas}}">Show</a>
           </td>
         </tr>

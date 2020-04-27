@@ -50,9 +50,9 @@ class WarehouseController extends Controller
             'fk_TINKLASpavadinimas'
         );
 
-        dd($warehouse, $suppliers, $customers);
+        // dd($warehouse, $suppliers, $customers);
 
-        return view('warehouse.show', compact('warehouse'));
+        return view('warehouse.show', compact('warehouse', 'suppliers', 'customers'));
     }
 
     public function edit($id)
