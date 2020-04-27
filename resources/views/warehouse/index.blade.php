@@ -8,9 +8,9 @@
     </div>
     <table class="table is-striped is-fullwidth">
       <thead>
-        <th style="text-align: center">Name</th>
-        <th style="text-align: center">Country</th>
-        <th style="text-align: center">Address</th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Address</th>
         <th></th>
       </thead>
       <tbody>
@@ -20,7 +20,7 @@
           <td>{{$warehouse->salis}}</td>
           <td>{{$warehouse->adresas}}</td>
           <td>
-            <div class="level">
+            {{-- <div class="level">
               <div class="level-item">
                 <a class="button is-link is-small is-outlined" href="/warehouses/{{$warehouse->pavadinimas}}/edit">Edit</a>
               </div>
@@ -31,13 +31,16 @@
                   <button type="submit" class="button is-danger is-small is-outlined">Delete</button>
                 </form>
               </div>
-            </div>
+            </div> --}}
+            <a class="button is-link is-small is-outlined" href="/warehouses/{{$warehouse->pavadinimas}}">Show</a>
           </td>
         </tr>
         @endforeach
       </tbody>
     </table>
-    <a role="button" class="button is-info is-bold" href="/warehouses/create">Register a new wholesale</a>
+    <div class="field has-text-centered">
+        <a role="button" class="button is-info is-bold is-large" href="/warehouses/create">Register a new wholesale</a>
+    </div>
   </div>
 
 @endsection

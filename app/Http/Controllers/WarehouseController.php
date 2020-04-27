@@ -41,8 +41,14 @@ class WarehouseController extends Controller
     public function show($id)
     {
         $warehouse = DB::select('SELECT * FROM DIDMENA WHERE pavadinimas = ?', [$id])[0];
-        $suppliers = DB::select('SELECT * FROM DIDMENA_FABRIKAS WHERE fk_DIDMENApavadinimas = ?', [$id]);
-        $customers = DB::select('SELECT * FROM DIDMENA_TINKLAS WHERE fk_DIDMENApavadinimas = ?', [$id]);
+        $suppliers = array_column(
+            DB::select('SELECT fk_FABRIKASpavadinimas FROM DIDMENA_FABRIKAS WHERE fk_DIDMENApavadinimas = ?', [$id]),
+            'fk_FABRIKASpavadinimas'
+        );
+        $customers = array_column(
+            DB::select('SELECT fk_TINKLASpavadinimas FROM DIDMENA_TINKLAS WHERE fk_DIDMENApavadinimas = ?', [$id]),
+            'fk_TINKLASpavadinimas'
+        );
 
         dd($warehouse, $suppliers, $customers);
 
