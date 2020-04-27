@@ -38,7 +38,16 @@ class WarehouseController extends Controller
         return redirect('/warehouses');
     }
 
-    public function show($id) { }
+    public function show($id)
+    {
+        $warehouse = DB::select('SELECT * FROM DIDMENA WHERE pavadinimas = ?', [$id])[0];
+        $suppliers = DB::select('SELECT * FROM DIDMENA_FABRIKAS WHERE fk_DIDMENApavadinimas = ?', [$id]);
+        $customers = DB::select('SELECT * FROM DIDMENA_TINKLAS WHERE fk_DIDMENApavadinimas = ?', [$id]);
+
+        dd($warehouse, $suppliers, $customers);
+
+        return view('warehouse.show', compact('warehouse'));
+    }
 
     public function edit($id)
     {
