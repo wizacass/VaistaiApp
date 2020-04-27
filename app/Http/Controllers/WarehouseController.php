@@ -50,8 +50,6 @@ class WarehouseController extends Controller
             'fk_TINKLASpavadinimas'
         );
 
-        // dd($warehouse, $suppliers, $customers);
-
         return view('warehouse.show', compact('warehouse', 'suppliers', 'customers'));
     }
 
@@ -91,8 +89,6 @@ class WarehouseController extends Controller
             'country' => $this->validators,
             'address' => $this->validators
         ]);
-
-        // dd($request);
 
         $this->cleanTables($id);
         foreach($request->customers as $customer)
