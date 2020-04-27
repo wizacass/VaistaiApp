@@ -46,33 +46,37 @@ class FactoryController extends Controller
         return view('factory.show', compact('factory', 'customers'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $factory = DB::select('SELECT * FROM FABRIKAS WHERE pavadinimas = ?', [$id])[0];
+        $customers = DB::select('SELECT pavadinimas FROM DIDMENA');
+        $activeCustomers = $this->getActiveCustomerNames($id);
+
+        return view('factory.edit', compact('factory', 'customers', 'activeCustomers'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
     }
 
     public function destroy($id)
     {
+        // TODO: Delete entries from DIDMENA_FABRIKAS table too
+
         DB::delete('DELETE FROM FABRIKAS WHERE pavadinimas = ?', [$id]);
 
         return redirect('factories');
+    }
+
+    private function getActiveCustomerNames($id)
+    {
+        $names = [];
+        $customers = DB::select('SELECT fk_DIDMENApavadinimas FROM DIDMENA_FABRIKAS WHERE fk_FABRIKASpavadinimas = ?', [$id]);
+        foreach ($customers as $customer)
+        {
+            array_push($names, $customer->fk_DIDMENApavadinimas);
+        }
+        return $names;
     }
 }
