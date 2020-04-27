@@ -20,7 +20,7 @@
       </div>
       <div class="navbar-menu" :class="{'is-active' : isMenuShown}">
         <div class="navbar-start">
-          <a class="navbar-item" href="#">Factories</a>
+          <a class="navbar-item" href="/factories">Factories</a>
           <a class="navbar-item" href="/warehouses">Wholesale</a>
           <a class="navbar-item" href="/networks">Pharmaceutical Networks</a>
           <a class="navbar-item" href="/pharmacies">Pharmacies</a>
