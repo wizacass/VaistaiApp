@@ -51,8 +51,6 @@ class PharmaceuticalNetworkController extends Controller
             'fk_DIDMENApavadinimas'
         );
 
-        // dd($network, $pharmacies, $suppliers);
-
         return view('ph_network.show', compact('network', 'pharmacies', 'suppliers'));
     }
 
@@ -68,15 +66,11 @@ class PharmaceuticalNetworkController extends Controller
             'fk_DIDMENApavadinimas'
         );
 
-        // dd($suppliers, $activeSuppliers);
-
         return view('ph_network.edit', compact('network', 'suppliers', 'activeSuppliers'));
     }
 
     public function update(Request $request, $id)
     {
-        //  dd($request);
-
         $attributes = request()->validate([
             'year' => ['required', 'integer', 'min:1900', 'max:2020']
         ]);

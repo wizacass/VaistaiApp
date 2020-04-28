@@ -20,18 +20,6 @@
           <td>{{ $network->vaistiniu_skaicius }}</td>
           <td>{{ $network->ikurimo_metai }}</td>
           <td>
-            {{-- <div class="level">
-              <div class="level-item">
-                <a class="button is-link is-small is-outlined" href="/networks/{{$network->pavadinimas}}/edit">Edit</a>
-              </div>
-              <div class="level-item">
-                <form method="POST" action="/networks/{{$network->pavadinimas}}">
-                  @method('DELETE')
-                  @csrf
-                  <button type="submit" class="button is-danger is-small is-outlined">Delete</button>
-                </form>
-              </div>
-            </div> --}}
             <a class="button is-link is-small is-outlined" href="/networks/{{ $network->pavadinimas }}">Show</a>
           </td>
         </tr>
