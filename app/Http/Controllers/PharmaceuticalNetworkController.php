@@ -36,7 +36,16 @@ class PharmaceuticalNetworkController extends Controller
 
     public function show($id)
     {
-        dd("I display '$id' info");
+        $network = DB::select('SELECT * FROM TINKLAS WHERE pavadinimas = ?', [$id])[0];
+        $pharmacies = DB::select('SELECT filialo_id, adresas FROM VAISTINE WHERE fk_TINKLASpavadinimas = ?', [$id]);
+        $suppliers = array_column(
+            DB::select('SELECT fk_DIDMENApavadinimas FROM DIDMENA_TINKLAS WHERE fk_TINKLASpavadinimas = ?', [$id]),
+            'fk_DIDMENApavadinimas'
+        );
+
+        //dd($network, $pharmacies, $suppliers);
+
+        return view('ph_network.show', compact('network', 'pharmacies', 'suppliers'));
     }
 
     public function edit($id)
