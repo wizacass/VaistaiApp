@@ -11,43 +11,49 @@
       @method('PATCH')
       @csrf
 
-      @if ($errors->any())
-        <article class="message is-danger">
-          <div class="message-header"><p>Danger</p></div>
-          <div class="message-body">
-            <ul>
-              @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-              @endforeach
-            </ul>
+      @component('components.formerror')
+      @endcomponent
+
+      <div class=columns>
+        <div class="column is-one-third">
+          <h3 class="subtitle center-text">Edit General information</h3>
+
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label" for="year">Year Founded</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <input type="text" class="input {{ $errors->has('year') ? 'is-danger' : '' }}" name="year" placeholder="Year Founded" value="{{ $network->ikurimo_metai }}" required>
+                </div>
+              </div>
+            </div>
           </div>
-        </article>
-      @endif
-
-      {{-- <div class="field">
-        <label class="label" for="country">Country</label>
-        <div class="control">
-          <input type="text" class="input {{ $errors->has('country') ? 'is-danger' : '' }}" name="country" placeholder="Country" value="{{ $network->salis }}" required>
         </div>
-      </div> --}}
 
-      <div class="field">
-        <label class="label" for="year">Year Founded</label>
-        <div class="control">
-          <input type="text" class="input {{ $errors->has('year') ? 'is-danger' : '' }}" name="year" placeholder="Year Founded" value="{{ $network->ikurimo_metai }}" required>
+        <div class="column">
+          <h3 class="subtitle center-text">Edit Suppliers</h3>
+          <table class="table is-striped is-fullwidth">
+            @foreach($suppliers as $supplier)
+              <tr><td>
+                <label class="checkbox">
+                  <input type="checkbox" name="suppliers[]" value="{{ $supplier }}" {{ in_array($supplier, $activeSuppliers) ? "checked" : ""}}> {{ $supplier }}
+                </label>
+              </td></tr>
+            @endforeach
+          </table>
         </div>
       </div>
 
-      <br/>
-
-      <div class="field">
-        <div class="control">
-          <button type="submit" class="button is-info is-bold">Update</button>
-        </div>
+      <div class="field has-text-centered">
+        <button type="submit" class="button is-info is-bold">Update</button>
       </div>
 
     </form>
 
   </div>
+
+  <br/>
 
 @endsection
