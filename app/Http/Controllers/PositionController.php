@@ -21,15 +21,17 @@ class PositionController extends Controller
         return view('positions.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $attributes = request()->validate([
+            'title' => $this->validators,
+        ]);
+
+        DB::insert('INSERT INTO Vaistininko_Pareigos (name) VALUES (?)', [
+            $attributes['title']
+        ]);
+
+        return redirect('positions');
     }
 
     public function show($id)
@@ -44,26 +46,24 @@ class PositionController extends Controller
         return view('positions.edit', compact('position'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $attributes = request()->validate([
+            'title' => $this->validators,
+        ]);
+
+        DB::update('UPDATE Vaistininko_Pareigos SET name = ? WHERE id_Vaistininko_Pareigos = ?', [
+            $attributes['title'],
+            $id
+        ]);
+
+        return redirect('positions');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        DB::delete('DELETE FROM Vaistininko_Pareigos WHERE id_Vaistininko_Pareigos = ?', [$id]);
+
+        return redirect('positions');
     }
 }
