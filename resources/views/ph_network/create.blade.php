@@ -30,13 +30,6 @@
         </div>
       </div>
 
-      {{-- <div class="field">
-        <label class="label" for="country">Country</label>
-        <div class="control">
-          <input type="text" class="input {{ $errors->has('country') ? 'is-danger' : '' }}" name="country" placeholder="Country" value="{{ old('country') }}" required>
-        </div>
-      </div> --}}
-
       <div class="field">
         <label class="label" for="year">Year founded</label>
         <div class="control">
