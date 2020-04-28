@@ -54,6 +54,38 @@
           </div>
         </div>
 
+        <div class="field">
+          <label class="label" for="employee">Add an employee</label>
+          <div class="level">
+            <div class="level-item">
+              <div class="control">
+                <input type="text" class="input {{ $errors->has('e_name') ? 'is-danger' : '' }}" name="e_name" placeholder="Name" value="{{ old('e_name') }}">
+              </div>
+            </div>
+            <div class="level-item">
+              <div class="control">
+                <input type="text" class="input {{ $errors->has('e_surname') ? 'is-danger' : '' }}" name="e_surname" placeholder="Surname" value="{{ old('e_surname') }}">
+              </div>
+            </div>
+            <div class="level-item">
+              <div class="control">
+                <input type="text" class="input {{ $errors->has('e_exp') ? 'is-danger' : '' }}" name="e_exp" placeholder="Experience" value="{{ old('e_exp') }}">
+              </div>
+            </div>
+            <div class="level-item">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select name="e_position">
+                    @foreach ($positions as $position)
+                      <option value="{{ $position->id_Vaistininko_Pareigos }}">{{ $position->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       <button type="submit" class="button is-info">Register</button>
     </form>
   </div>
