@@ -19634,8 +19634,8 @@ var staticRenderFns = [
         _vm._v("Employees")
       ]),
       _vm._v(" "),
-      _c("a", { staticClass: "navbar-item", attrs: { href: "#" } }, [
-        _vm._v("TBA")
+      _c("a", { staticClass: "navbar-item", attrs: { href: "/positions" } }, [
+        _vm._v("Positions")
       ])
     ])
   }
