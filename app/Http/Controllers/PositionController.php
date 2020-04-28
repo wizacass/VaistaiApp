@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PositionController extends Controller
 {
-    private $validators = ['required', 'min:3', 'max:255'];
+    private $validators = ['required', 'min:3', 'max:64'];
 
     public function index()
     {
