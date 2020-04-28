@@ -98,6 +98,14 @@ class PharmaceuticalNetworkController extends Controller
     public function destroy($id)
     {
         $this->cleanSuppliers($id);
+        DB::update('UPDATE VAISTINE SET fk_TINKLASpavadinimas = ? WHERE fk_TINKLASpavadinimas = ?', [
+            NULL,
+            $id
+        ]);
+        DB::update('UPDATE DARBUOTOJAS SET fk_TINKLASpavadinimas = ? WHERE fk_TINKLASpavadinimas = ?', [
+            NULL,
+            $id
+        ]);
         DB::delete('DELETE FROM TINKLAS WHERE pavadinimas = ?', [$id]);
 
         return redirect('/networks');
