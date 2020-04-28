@@ -47,7 +47,7 @@
         <h3 class="subtitle has-text-centered">Customers</h3>
         <div class="list is-hoverable has-text-centered">
           @foreach ($customers as $customer)
-            <a href="/networks/{{ $customer->fk_DIDMENApavadinimas }}" class="list-item">{{ $customer->fk_DIDMENApavadinimas }}</a>
+            <a href="/warehouses/{{ $customer->fk_DIDMENApavadinimas }}" class="list-item">{{ $customer->fk_DIDMENApavadinimas }}</a>
           @endforeach
         </div>
       </div>
