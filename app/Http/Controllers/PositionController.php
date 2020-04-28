@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class PositionController extends Controller
 {
+    private $validators = ['required', 'min:3', 'max:255'];
+
     public function index()
     {
         $positions = DB::select('SELECT * FROM Vaistininko_Pareigos');
@@ -14,14 +16,9 @@ class PositionController extends Controller
         return view('positions.index', compact('positions'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('positions.create');
     }
 
     /**
@@ -35,26 +32,16 @@ class PositionController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        return redirect('positions/index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $position = DB::select('SELECT * FROM Vaistininko_Pareigos WHERE id_Vaistininko_Pareigos = ?', [$id])[0];
+
+        return view('positions.edit', compact('position'));
     }
 
     /**
