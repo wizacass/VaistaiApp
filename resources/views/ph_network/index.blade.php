@@ -8,19 +8,19 @@
     </div>
     <table class="table is-striped is-fullwidth">
       <thead>
-        <th style="text-align: center">Name</th>
-        <th style="text-align: center">Pharmacies Count</th>
-        <th style="text-align: center">Year founded</th>
+        <th>Name</th>
+        <th><abbr title="Pharmacies Count">Ph. C</abbr></th>
+        <th>Year founded</th>
         <th></th>
       </thead>
       <tbody>
         @foreach ($networks as $network)
         <tr>
-          <td>{{$network->pavadinimas}}</td>
-          <td style="text-align: center">{{$network->vaistiniu_skaicius}}</td>
-          <td style="text-align: center">{{$network->ikurimo_metai}}</td>
+          <td>{{ $network->pavadinimas }}</td>
+          <td>{{ $network->vaistiniu_skaicius }}</td>
+          <td>{{ $network->ikurimo_metai }}</td>
           <td>
-            <div class="level">
+            {{-- <div class="level">
               <div class="level-item">
                 <a class="button is-link is-small is-outlined" href="/networks/{{$network->pavadinimas}}/edit">Edit</a>
               </div>
@@ -31,13 +31,16 @@
                   <button type="submit" class="button is-danger is-small is-outlined">Delete</button>
                 </form>
               </div>
-            </div>
+            </div> --}}
+            <a class="button is-link is-small is-outlined" href="/networks/{{ $network->pavadinimas }}">Show</a>
           </td>
         </tr>
         @endforeach
       </tbody>
     </table>
-    <a role="button" class="button is-info is-bold" href="/networks/create">Register a new network</a>
+    <div class="field has-text-centered">
+      <a role="button" class="button is-info is-bold is-large" href="/networks/create">Register a new network</a>
+    </div>
   </div>
 
 @endsection
