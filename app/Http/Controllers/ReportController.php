@@ -30,8 +30,6 @@ class ReportController extends Controller
 
         $totalEmployees = count($employees);
 
-        //dd($pharmacies, $employees, $totalEmployees);
-
         return view('report.show', compact('network', 'pharmacies', 'employees', 'totalEmployees'));
     }
 }
