@@ -34,16 +34,16 @@
       </div>
 
       <div class="field">
-        <label class="label" for="from">Pharmacy Revenue Min</label>
+        <label class="label" for="revenue">Pharmacy Revenue Min</label>
         <div class="control">
-          <input type="number" class="input {{ $errors->has('from') ? 'is-danger' : '' }}" name="from" placeholder="0" value="{{ old('from') }}">
+          <input type="number" class="input {{ $errors->has('revenue') ? 'is-danger' : '' }}" name="revenue" placeholder="0" value="{{ old('revenue') }}">
         </div>
       </div>
 
       <div class="field">
-        <label class="label" for="to">Pharmacy Revenue Max</label>
+        <label class="label" for="seniority">Employee Seniority Min</label>
         <div class="control">
-          <input type="number" class="input {{ $errors->has('to') ? 'is-danger' : '' }}" name="to" placeholder="0" value="{{ old('to') }}">
+          <input type="number" class="input {{ $errors->has('seniority') ? 'is-danger' : '' }}" name="seniority" placeholder="0" value="{{ old('seniority') }}">
         </div>
       </div>
 
