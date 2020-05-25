@@ -22,7 +22,10 @@ class ReportController extends Controller
             'to' => ['required', 'integer', 'gte:from']
         ]);
 
-        dd($attributes);
-        dd('I display an actual report!');
+        $network = $attributes['network'];
+
+        //dd($attributes);
+
+        return view('report.show', compact('network'));
     }
 }
