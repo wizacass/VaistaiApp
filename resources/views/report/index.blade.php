@@ -20,9 +20,11 @@
         <label class="label" for="name">Pharmacy Network</label>
         <div class="control">
           <div class="select is-fullwidth">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
+            <select name="network">
+              <option value="">Select a Network</option>
+              @foreach ($networks as $network)
+                <option value="{{ $network->pavadinimas }}">{{ $network->pavadinimas }}</option>
+              @endforeach
             </select>
           </div>
         </div>
