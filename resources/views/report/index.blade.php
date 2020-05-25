@@ -16,10 +16,13 @@
     <form method="POST" action="/report">
       @csrf
 
+      @component('components.formerror')
+      @endcomponent
+
       <div class="field">
-        <label class="label" for="name">Pharmacy Network</label>
+        <label class="label" for="network">Pharmacy Network</label>
         <div class="control">
-          <div class="select is-fullwidth">
+          <div class="select is-fullwidth {{ $errors->has('network') ? 'is-danger' : '' }}">
             <select name="network">
               <option value="">Select a Network</option>
               @foreach ($networks as $network)
@@ -33,14 +36,14 @@
       <div class="field">
         <label class="label" for="from">Pharmacy Revenue Min</label>
         <div class="control">
-          <input type="number" class="input {{ $errors->has('name') ? 'is-danger' : '' }}" name="from" placeholder="0" value="{{ old('name') }}">
+          <input type="number" class="input {{ $errors->has('from') ? 'is-danger' : '' }}" name="from" placeholder="0" value="{{ old('from') }}">
         </div>
       </div>
 
       <div class="field">
         <label class="label" for="to">Pharmacy Revenue Max</label>
         <div class="control">
-          <input type="number" class="input {{ $errors->has('name') ? 'is-danger' : '' }}" name="to" placeholder="0" value="{{ old('name') }}">
+          <input type="number" class="input {{ $errors->has('to') ? 'is-danger' : '' }}" name="to" placeholder="0" value="{{ old('to') }}">
         </div>
       </div>
 

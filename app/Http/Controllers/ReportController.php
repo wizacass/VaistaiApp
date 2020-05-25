@@ -16,7 +16,13 @@ class ReportController extends Controller
 
     public function show(Request $request)
     {
-        dd($request);
+        $attributes = request()->validate([
+            'network' => ['required'],
+            'from' => ['required', 'integer', 'min:0'],
+            'to' => ['required', 'integer', 'gte:from']
+        ]);
+
+        dd($attributes);
         dd('I display an actual report!');
     }
 }
