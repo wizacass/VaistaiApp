@@ -27,6 +27,9 @@
           <a class="navbar-item" href="/employees">Employees</a>
           <a class="navbar-item" href="/positions">Positions</a>
         </div>
+        <div class="navbar-end">
+          <a class="navbar-item" href="/report">Report</a>
+        </div>
       </div>
     </nav>
   </div>

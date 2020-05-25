@@ -23,3 +23,6 @@ Route::resource('/pharmacies', 'PharmacyController');
 Route::resource('/employees', 'EmployeeController');
 Route::resource('/factories', 'FactoryController');
 Route::resource('/positions', 'PositionController');
+
+Route::get('/report', 'ReportController@index');
+Route::post('/report', 'ReportController@show');
