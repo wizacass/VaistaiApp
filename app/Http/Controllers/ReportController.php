@@ -28,8 +28,10 @@ class ReportController extends Controller
 
         $employees = DB::select('SELECT v.filialo_id AS PharmacyID, d.id AS EmployeeID, d.vardas AS Name, UPPER(d.pavarde) AS Surname, vp.name AS Positon, d.darbo_stazas AS Seniority, k.modelis AS Register FROM VAISTINE v LEFT JOIN DARBUOTOJAS d ON d.fk_VAISTINEfilialo_id = v.filialo_id LEFT JOIN KASA k ON k.id_KASA = d.fk_KASAid_KASA INNER JOIN Vaistininko_Pareigos vp ON d.pareigos = vp.id_Vaistininko_Pareigos WHERE v.fk_TINKLASpavadinimas = ? AND v.apyvarta >= IFNULL(?, 0) AND d.darbo_stazas >= IFNULL(?, 0) ORDER BY v.filialo_id, d.darbo_stazas DESC', [$network, $attributes['revenue'], $attributes['seniority']]);
 
-        dd($pharmacies, $employees);
+        $totalEmployees = count($employees);
 
-        return view('report.show', compact('network'));
+        dd($pharmacies, $employees, $totalEmployees);
+
+        return view('report.show', compact('network', 'pharmacies', 'employees', 'totalEmployees'));
     }
 }
