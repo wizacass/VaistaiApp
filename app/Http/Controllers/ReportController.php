@@ -24,11 +24,11 @@ class ReportController extends Controller
 
         $network = $attributes['network'];
 
-        // $pharmacies = DB::select('SELECT * FROM VAISTINE LEFT JOIN DARBUOTOJAS ON DARBUOTOJAS.fk_VAISTINEfilialo_id = VAISTINE.filialo_id LEFT JOIN KASA ON KASA.fk_VAISTINEfilialo_id = VAISTINE.filialo_id INNER JOIN Vaistininko_Pareigos ON DARBUOTOJAS.pareigos = Vaistininko_Pareigos.id_Vaistininko_Pareigos WHERE VAISTINE.fk_TINKLASpavadinimas = ? AND VAISTINE.apyvarta >= ? AND VAISTINE.apyvarta <= ? GROUP BY VAISTINE.filialo_id ORDER BY VAISTINE.apyvarta DESC', [$network, $attributes['from'], $attributes['to']]);
+        $pharmacies = DB::select('SELECT v.filialo_id AS ID, v.apyvarta AS Revenue, COUNT(d.id) AS EmployeeCount, IFNULL(SUM(k.pinigu_skaicius), 0) AS Cash, FORMAT(IFNULL(AVG(d.darbo_stazas), 0), 2) AS AvgSeniority FROM VAISTINE v LEFT JOIN DARBUOTOJAS d ON d.fk_VAISTINEfilialo_id = v.filialo_id LEFT JOIN KASA k ON k.id_KASA = d.fk_KASAid_KASA WHERE v.fk_TINKLASpavadinimas = ? AND v.apyvarta >= IFNULL(?, 0) GROUP BY v.filialo_id ORDER BY v.apyvarta DESC', [$network, $attributes['revenue']]);
 
-        $employees = DB::select('SELECT v.filialo_id AS PharmacyID, d.id AS EmployeeID, d.vardas AS Name, d.pavarde AS Surname, vp.name AS Positon, d.darbo_stazas AS Seniority, k.modelis AS Register FROM VAISTINE v LEFT JOIN DARBUOTOJAS d ON d.fk_VAISTINEfilialo_id = v.filialo_id LEFT JOIN KASA k ON k.id_KASA = d.fk_KASAid_KASA INNER JOIN Vaistininko_Pareigos vp ON d.pareigos = vp.id_Vaistininko_Pareigos WHERE v.fk_TINKLASpavadinimas = ? AND v.apyvarta >= IFNULL(?, 0) AND d.darbo_stazas >= IFNULL(?, 0) ORDER BY v.filialo_id, d.darbo_stazas DESC', [$network, $attributes['revenue'], $attributes['seniority']]);
+        $employees = DB::select('SELECT v.filialo_id AS PharmacyID, d.id AS EmployeeID, d.vardas AS Name, UPPER(d.pavarde) AS Surname, vp.name AS Positon, d.darbo_stazas AS Seniority, k.modelis AS Register FROM VAISTINE v LEFT JOIN DARBUOTOJAS d ON d.fk_VAISTINEfilialo_id = v.filialo_id LEFT JOIN KASA k ON k.id_KASA = d.fk_KASAid_KASA INNER JOIN Vaistininko_Pareigos vp ON d.pareigos = vp.id_Vaistininko_Pareigos WHERE v.fk_TINKLASpavadinimas = ? AND v.apyvarta >= IFNULL(?, 0) AND d.darbo_stazas >= IFNULL(?, 0) ORDER BY v.filialo_id, d.darbo_stazas DESC', [$network, $attributes['revenue'], $attributes['seniority']]);
 
-        dd($employees);
+        dd($pharmacies, $employees);
 
         return view('report.show', compact('network'));
     }
